@@ -1,31 +1,23 @@
-<script setup>
-import { RouterLink, RouterView } from "vue-router";
-</script>
-
 <template>
-  <header>
-    <nav>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/about">About</RouterLink>
-    </nav>
-  </header>
-
-<RouterView />
+  <AppHeader />
+    <main>
+        <RouterView />
+    </main>
+    <AppFooter />
 </template>
 
-<style  scoped>
-header {
-  position: absolute;
-  top: 0;
- left: 5px;
- right: 5px;
-  width: 98vw;
-  padding: 10px 5px;
-  margin-right: 5px;
-  margin-top: 5px;
-  background-color: orange;
+<script>
+import AppHeader from './cmps/AppHeader.vue'
+import AppFooter from './cmps/AppFooter.vue'
+export default {
+ components: {
+        AppHeader,
+        AppFooter,
+       
+    }
 }
-body{
-  background-color: lightgray;
-}
+</script>
+
+<style>
+
 </style>

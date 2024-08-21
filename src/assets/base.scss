@@ -35,6 +35,9 @@
 
   --section-gap: 160px;
 }
+.router-link-active {
+  color: white;
+}
 
 @media (prefers-color-scheme: dark) {
   :root {
