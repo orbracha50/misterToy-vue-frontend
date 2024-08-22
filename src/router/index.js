@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import ToyIndex from '../pages/ToyIndex.vue'
-
+import ToyDetails from '../pages/ToyDetails.vue'
+import ToyEdit from '../pages/ToyEdit.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -11,15 +12,14 @@ const router = createRouter({
     },
     {
       path: '/toy/:toyId',
-      name: 'ToyIndex',
-      component: ToyIndex
+      name: 'ToyDetails',
+      component: ToyDetails
     },
     {
-      path: '/',
-      name: 'ToyIndex',
-      component: ToyIndex
+      path: '/toy/edit/:toyId?',
+      name: 'ToyEdit',
+      component: ToyEdit
     },
-
     {
       path: '/about',
       name: 'about',

@@ -1,25 +1,21 @@
 <template>
-  <section class="home">
+  <section  class="home">
+    <ToyFilter @filter="onFilter" />
+    <RouterLink :to="`/toy/edit/`"><button>Add Toy</button></RouterLink>
     <ToyList v-if="toys" @remove="removeToy" :toys="toys" />
   </section>
 </template>
 
 <script>
 import ToyList from "@/cmps/ToyList.vue";
+import ToyFilter from "@/cmps/ToyFilter.vue";
 import toyService from "../services/toy/toy.service.js";
 export default {
-  data() {
-    return {
-      toys: null,
-    };
-  },
   methods: {
     async removeToy(toyId) {
       try {
-        console.log(toyId)
-        await toyService.remove(toyId);
-        const idx = this.toys.findIndex((toy) => toy._id === toyId);
-        this.toys.splice(idx, 1);
+        console.log(toyId);
+        await this.$store.dispatch({ type: "removeToy" ,toyId});
 
         /*  showSuccessMsg(`Removed toy ${toyId}`) */
       } catch (err) {
@@ -27,15 +23,22 @@ export default {
       }
     },
     async onFilter(filterBy) {
-      this.toys = await toyService.query(filterBy);
+      console.log(filterBy);
+      this.$store.dispatch({ type: "loadToys" ,filterBy});
     },
   },
   async created() {
-    this.toys = await toyService.queryToys();
-    console.log(this.toys);
+    console.log(this.$store)
+    this.$store.dispatch({ type: "loadToys" });
+  },
+  computed: {
+    toys() {
+      return this.$store.getters.toys;
+    },
   },
   components: {
     ToyList,
+    ToyFilter,
   },
 };
 </script>
