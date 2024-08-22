@@ -10,6 +10,17 @@ const router = createRouter({
       component: ToyIndex
     },
     {
+      path: '/toy/:toyId',
+      name: 'ToyIndex',
+      component: ToyIndex
+    },
+    {
+      path: '/',
+      name: 'ToyIndex',
+      component: ToyIndex
+    },
+
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting

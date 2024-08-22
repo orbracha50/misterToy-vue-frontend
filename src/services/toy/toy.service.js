@@ -22,6 +22,7 @@ async function getById(toyId) {
 
 
 async function remove(toyId) {
+    console.log(toyId)
     return await httpService.delete(`toy/${toyId}`)
 }
 
