@@ -4,7 +4,7 @@
     <img v-if="toy.imgUrl" :src="`${toy.imgUrl}`" alt="" />
     <h2>Price: {{ toy.price }}$</h2>
     <h3 v-if="toy.owner">Owner: {{ toy.owner }}</h3>
-     <RouterLink to="/" ><button>Back</button></RouterLink>
+     <RouterLink to="/toy" ><button>Back</button></RouterLink>
   </section>
 </template>
 

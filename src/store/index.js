@@ -1,6 +1,6 @@
 import { createStore } from 'vuex'
 import { toy } from './modules/toy.js'
-
+import { user } from './modules/user.js'
 const options = {
     strict: true,
 	state: {
@@ -14,6 +14,8 @@ const options = {
     },
     modules: {
         toy,
+        user,
+        cart
     }
 }
 

@@ -30,15 +30,16 @@ export default {
    width: 100%;
    height: 100%;
     text-align: center;
+    color: black;
     img{
-        height: 100px;
-        width: 100px;
+       max-width: 100%;
+      max-height:170px;
         
     }
     h1{
         
         font-size: 24px;
-        color: #333;
+        
         margin-bottom: 10px;
     }
 
@@ -49,14 +50,14 @@ export default {
        justify-self: end;
         padding: 10px;
         font-size: 20px;
-        color: #666;
+       
         margin-bottom: 8px;
     }
 
     h3{
 
         font-size: 16px;
-        color: #999;
+        
     }
 }
 </style>

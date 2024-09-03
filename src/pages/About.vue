@@ -10,6 +10,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 
+p{
+     margin-top: 5vh;
+}
 </style>

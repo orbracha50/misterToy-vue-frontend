@@ -18,7 +18,8 @@ export default {
     methods: {
         showMsg(msg) {
             this.msg = msg
-            setTimeout(() => this.msg.txt = '', 2000)
+            console.log(this.msg.txt)
+            setTimeout(() => this.msg.txt = '', 5000)
         }
     },
     created() {

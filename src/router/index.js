@@ -2,11 +2,18 @@ import { createRouter, createWebHistory } from 'vue-router'
 import ToyIndex from '../pages/ToyIndex.vue'
 import ToyDetails from '../pages/ToyDetails.vue'
 import ToyEdit from '../pages/ToyEdit.vue'
+import HomePage from '../pages/HomePage.vue'
+import LoginPage from '../pages/LoginPage.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
+      name: 'HomePage',
+      component: HomePage
+    },
+    {
+      path: '/toy',
       name: 'ToyIndex',
       component: ToyIndex
     },
@@ -19,6 +26,11 @@ const router = createRouter({
       path: '/toy/edit/:toyId?',
       name: 'ToyEdit',
       component: ToyEdit
+    },
+    {
+      path: '/login',
+      name: 'LoginPage',
+      component: LoginPage
     },
     {
       path: '/about',

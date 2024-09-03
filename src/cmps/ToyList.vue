@@ -9,8 +9,11 @@
             ><button>Details</button></RouterLink
           >
           <RouterLink :to="`/toy/edit/${toy._id}`"
-            ><button>Edit</button></RouterLink
+            ><button v-if="!user.isAdmin">Edit</button></RouterLink
           >
+          <button @click="addToCart(toy)" v-if="user.isAdmin">
+            Add to cart
+          </button>
         </div>
       </li>
     </TransitionGroup>
@@ -19,10 +22,16 @@
 
 <script>
 import ToyPreview from "@/cmps/ToyPreview.vue";
+import { showErrorMsg, showSuccessMsg } from "@/services/eventBus.service";
+import UserMsg from "@/cmps/UserMsg.vue";
 export default {
   props: {
     toys: {
       type: Array,
+      required: true,
+    },
+    user: {
+      type: Object,
       required: true,
     },
   },
@@ -30,6 +39,9 @@ export default {
     onRemoveToy(toyId) {
       console.log(toyId);
       this.$emit("remove", toyId);
+    },
+    addToCart(toy) {
+      showSuccessMsg(toy.name + " add to cart");
     },
   },
   components: {
@@ -41,21 +53,44 @@ export default {
 <style lang="scss">
 .toy-list ul {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 10px;
-  width: 100%;
+  width: 100vw;
   padding: 10px;
   list-style: none;
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    justify-self: end;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 3px;
+    button {
+      background-color: white;
+      height: 25px;
+      /* border-radius: 10px; */
+      transition: 0.5s;
+    }
+    button:hover {
+      background-color: orangered;
+    }
+  }
   .btn-remove {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    height: max-content;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 15px;
+    right: 15px;
     background: none;
     border: none;
     font-size: 24px;
-    color: #888;
+    color: black;
     cursor: pointer;
     transition: color 0.3s ease;
+    border-radius: 50%;
   }
   li {
     position: relative;
@@ -65,14 +100,8 @@ export default {
     padding: 10px;
     background-color: orange;
     height: 320px;
-    width: 220px;
+    width: 100%;
     border-radius: 10px;
-  }
-
-  .actions {
-    display: flex;
-    gap: 6px;
-    justify-self: end;
   }
 }
 
