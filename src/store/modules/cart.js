@@ -15,7 +15,7 @@ export const cart = {
     },
     actions: {
         async removeFromCart({ commit }, { cartId }) {
-            await cartService.remove(cartId)
+            /* await cartService.remove(cartId) */
             commit({ type: 'removeCart', cartId })
         },
     },
